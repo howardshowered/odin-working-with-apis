@@ -8,15 +8,30 @@
 
 <body>
     <img src="#">
+    <button class="new-image">New Image</button>
     <script>
+        const newImageButton = document.querySelector(".new-image");
         const img = document.querySelector('img');
-        fetch('https://api.giphy.com/v1/gifs/translate?api_key=MCgKLjQHe1hVHpYb3VgRxJxIpKETpK8U&s=cats')
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(response) {
-            img.src = response.data.images.original.url;
+        //commented out fetch to not use api every start up.
+        // fetch('https://api.giphy.com/v1/gifs/translate?api_key=MCgKLjQHe1hVHpYb3VgRxJxIpKETpK8U&s=cats')
+        // .then(function(response) {
+        //     return response.json();
+        // })
+        // .then(function(response) {
+        //     img.src = response.data.images.original.url;
+        // });
+
+        newImageButton.addEventListener('click', () => {
+            fetch('https://api.giphy.com/v1/gifs/translate?api_key=MCgKLjQHe1hVHpYb3VgRxJxIpKETpK8U&s=cats')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (response) {
+                img.src = response.data.images.original.url;
+            });
         });
+
+        //@TODO add search feature
 
     </script>
 </body>
