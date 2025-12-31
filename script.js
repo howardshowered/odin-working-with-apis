@@ -12,6 +12,18 @@
         //     img.src = response.data.images.original.url;
         // });
 
+        async function getCatGifs() {
+            try {
+                const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=MCgKLjQHe1hVHpYb3VgRxJxIpKETpK8U&s=cats');
+                const catData = await response.json();
+                img.src = catData.data.images.original.url;
+            } catch (error){
+                console.error("An error occured: ", error.message);
+            } 
+        }
+
+        getCatGifs();
+
 
         newImageButton.addEventListener('click', () => {
             fetch('https://api.giphy.com/v1/gifs/translate?api_key=MCgKLjQHe1hVHpYb3VgRxJxIpKETpK8U&s=cats')
